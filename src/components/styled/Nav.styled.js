@@ -5,5 +5,5 @@ export const StyledNav = styled.nav`
 `;
 
 export const NavInblock = styled.nav`
-  display: inline-block;
+  display: block;
 `

@@ -13,7 +13,7 @@ export function Nav() {
           <li>
             <StyledLink>Men</StyledLink>
           </li>
-          <li>
+          <li> 
             <StyledLink>Women</StyledLink>
           </li>
           <li>
