@@ -6,14 +6,14 @@ export function Nav() {
   return (
     <>
       <StyledNav>
-        <StyledUlList>
+        <StyledUlList column>
           <li>
             <StyledLink>Collections</StyledLink>
           </li>
           <li>
             <StyledLink>Men</StyledLink>
           </li>
-          <li> 
+          <li>
             <StyledLink>Women</StyledLink>
           </li>
           <li>

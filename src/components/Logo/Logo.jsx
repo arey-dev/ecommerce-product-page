@@ -1,3 +1,9 @@
+import styled from "styled-components";
+
+const StyledImage = styled.img`
+  cursor: pointer;
+`;
+
 export function Logo({ src, alt }) {
-  return <img style={{ cursor: 'pointer' }} src={src} alt={alt} />;
+  return <StyledImage style={{ cursor: 'pointer' }} src={src} alt={alt} />;
 }
