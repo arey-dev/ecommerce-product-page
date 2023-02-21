@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const StyledContainer = styled.div`
-  width: min(1100px, 100% - 4rem);
+  width: min(${(props) => props.width || 1100}px, 100% - 4rem);
   padding-block: ${(props) => props.pBlock || 0}rem;
   margin-inline: auto;
 `;
@@ -25,4 +25,11 @@ export const HeaderContainer = styled(FlexedContainer)`
     border-bottom: none;
     padding-block: 1.5rem;
   }
+`;
+
+export const GridContainer = styled(StyledContainer)`
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  place-items: center;
+  gap: 5rem;
 `;
