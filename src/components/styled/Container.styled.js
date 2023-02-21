@@ -11,6 +11,7 @@ export const FlexedContainer = styled(StyledContainer)`
   justify-content: space-between;
   align-items: center;
   gap: 5rem;
+  transition: gap 0.3s ease-in-out;
 
   @media (max-width: 842px) {
     gap: 1rem;
@@ -21,7 +22,6 @@ export const HeaderContainer = styled(FlexedContainer)`
   border-bottom: 1px solid hsla(219, 9%, 45%, 0.15);
 
   @media (max-width: 768px) {
-
     border-bottom: none;
     padding-block: 1.5rem;
   }
