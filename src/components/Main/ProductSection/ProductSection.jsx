@@ -1,14 +1,17 @@
 import styled from "styled-components";
+import { ItemCounter } from "./ItemCounter";
+import { AddToCart } from "./AddToCart";
+import { FlexWrapper } from "../../styled/Wrappers.styled";
 
 const SectionContainer = styled.section`
   text-align: justified;
+  font-weight: 700;
 `;
 
 const Heading = styled.h1`
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
-  font-weight: 700;
   margin-bottom: 2rem;
 `;
 
@@ -28,12 +31,14 @@ const Headline = styled.span`
 const ProductDescription = styled.p`
   color: hsl(219, 9%, 45%);
   margin-bottom: 2rem;
+  font-weight: 400;
 `;
 
 const Pricing = styled.p`
   color: hsl(220, 13%, 13%);
   font-weight: 700;
   line-height: 1;
+  margin-bottom: 2rem;
 `;
 
 const Price = styled.span`
@@ -74,6 +79,10 @@ export function ProductSection() {
         <Discount>50%</Discount>
         <OriginalPrice>$250.00</OriginalPrice>
       </Pricing>
+      <FlexWrapper>
+        <ItemCounter />
+        <AddToCart />
+      </FlexWrapper>
     </SectionContainer>
   );
 }

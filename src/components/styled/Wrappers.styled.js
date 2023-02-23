@@ -24,3 +24,14 @@ export const AvatarWrapper = styled(IconWrapper)`
   }
 
 `;
+
+export const FlexWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
+`;

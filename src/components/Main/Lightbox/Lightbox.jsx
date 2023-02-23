@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { StyledButton } from "../../styled/Button.styled";
 
 const LightboxOverlay = styled.div`
   position: fixed;
@@ -18,13 +19,10 @@ const LightboxContent = styled.div`
   max-height: 90%;
 `;
 
-const CloseButton = styled.button`
+const CloseButton = styled(StyledButton)`
   position: absolute;
   top: -2rem;
   right: 0;
-  background-color: transparent;
-  border: none;
-  cursor: pointer;
 
   svg {
     transform: scale(1.5);
