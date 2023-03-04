@@ -18,12 +18,12 @@ const LightboxSection = styled.div`
   gap: 2rem;
 `;
 
-const ProductCard = styled(LightboxContainer)`
+const ProductCard = styled(LightboxSection)`
   gap: unset;
   cursor: pointer;
 `;
 
-const ProductImages = styled(LightboxContainer)`
+const ProductImages = styled(LightboxSection)`
   width: ${(props) => props.width || "100"}%;
   flex-direction: row;
   justify-content: space-between;
@@ -54,7 +54,7 @@ const CloseButton = styled(StyledButton)`
   }
 `;
 
-const LightboxOverlay = styled(LightboxContainer)`
+const LightboxOverlay = styled(LightboxSection)`
   position: fixed;
   top: 0;
   left: 0;
@@ -66,7 +66,7 @@ const LightboxOverlay = styled(LightboxContainer)`
   z-index: 1;
 `;
 
-const LightboxContent = styled(LightboxContainer)`
+const LightboxContent = styled(LightboxSection)`
   position: relative;
   width: 35%;
 `;
@@ -100,16 +100,16 @@ const LightboxButton = styled.div`
   }
 `;
 
+const products = [
+  { id: 1, name: "Product 1", imageUrl: product1, thumbnail: p1thumbnail },
+  { id: 2, name: "Product 2", imageUrl: product2, thumbnail: p2thumbnail },
+  { id: 3, name: "Product 3", imageUrl: product3, thumbnail: p3thumbnail },
+  { id: 4, name: "Product 4", imageUrl: product4, thumbnail: p4thumbnail },
+];
+
 export const Lightbox = () => {
   const [showLightbox, setShowLightbox] = useState(false);
   const [currentImage, setCurrentImage] = useState(null);
-
-  const products = [
-    { id: 1, name: "Product 1", imageUrl: product1, thumbnail: p1thumbnail },
-    { id: 2, name: "Product 2", imageUrl: product2, thumbnail: p2thumbnail },
-    { id: 3, name: "Product 3", imageUrl: product3, thumbnail: p3thumbnail },
-    { id: 4, name: "Product 4", imageUrl: product4, thumbnail: p4thumbnail },
-  ];
 
   const handleThumbnailClick = (index) => {
     setCurrentImage(products[index]);

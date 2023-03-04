@@ -6,6 +6,7 @@ export const StyledNav = styled.nav`
 
 export const NavInblock = styled.nav`
   display: inline-block;
+  position: relative;
 `;
 
 export const Hamburger = styled.div`

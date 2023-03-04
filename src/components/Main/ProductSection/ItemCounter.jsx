@@ -17,16 +17,15 @@ const CounterWrapper = styled(FlexWrapper)`
   }
 `;
 
-export function ItemCounter() {
-  const count = 0;
-
+export function ItemCounter({ count, increment, decrement }) {
+  
   return (
     <CounterWrapper>
-      <StyledButton>
+      <StyledButton onClick={decrement}>
         <img src={minus} alt="minus" />
       </StyledButton>
       <span>{count}</span>
-      <StyledButton>
+      <StyledButton onClick={increment}>
         <img src={plus} alt="plus" />
       </StyledButton>
     </CounterWrapper>

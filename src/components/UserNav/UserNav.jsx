@@ -2,9 +2,9 @@ import { StyledUlList } from "../styled/List.styled";
 import { NavInblock } from "../styled/Nav.styled";
 import { AvatarWrapper } from "../styled/Wrappers.styled";
 import { IconWrapper } from "../styled/Wrappers.styled";
+import { Cart } from "./Cart";
 import avatar from "../assets/image-avatar.png";
 import cart from "../assets/icon-cart.svg";
-
 export function UserNav() {
   return (
     <>
@@ -13,6 +13,7 @@ export function UserNav() {
           <li>
             <IconWrapper>
               <img src={cart} alt="cart icon" />
+              <Cart />
             </IconWrapper>
           </li>
           <li>

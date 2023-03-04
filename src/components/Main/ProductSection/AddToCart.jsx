@@ -4,7 +4,6 @@ import { StyledButton } from "../../styled/Button.styled";
 const AddToCartButton = styled(StyledButton)`
   width: 100%;
   background-color: hsl(26, 100%, 55%);
-  color: hsl(0, 0%, 100%);
   border-radius: 0.4rem;
   text-align: center;
   display: flex;
