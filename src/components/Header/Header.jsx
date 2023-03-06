@@ -9,7 +9,7 @@ import logo from "../assets/logo.svg";
 import { useViewportWidth } from "../util-hooks/useViewportWidth";
 import { useEffect } from "react";
 
-export function Header() {
+export function Header({fill, unload}) {
   const [isOpen, setIsOpen] = useState(false);
   const viewportWidth = useViewportWidth();
   const toggleMenu = () => setIsOpen(!isOpen);
@@ -31,7 +31,7 @@ export function Header() {
         </Hamburger>
         <Logo src={logo} alt="Sneakers Logo" />
         <Nav isOpen={isOpen} onToggleMenu={toggleMenu} />
-        <UserNav />
+        <UserNav fill={fill} unload={unload}/>
         <Overlay isOpen={isOpen} />
       </HeaderContainer>
     </header>

@@ -5,6 +5,15 @@ import { useState } from "react";
 
 export function App() {
   const [orderCount, setOrderCount] = useState(0);
+  const [fill, setFill] = useState(0);
+
+  const handleCartFill = () => {
+    setFill(prevCount => prevCount + orderCount);
+  };
+  
+  const handleCartDelete = () => {
+    setFill(0);
+  };
 
   const handleIncrement = () => {
     setOrderCount((prevCount) => prevCount + 1);
@@ -21,11 +30,12 @@ export function App() {
   return (
     <>
       <GlobalStyle />
-      <Header />
+      <Header fill={fill} unload={handleCartDelete} />
       <Main
         count={orderCount}
         increment={handleIncrement}
         decrement={handleDecrement}
+        addToCart={handleCartFill}
       />
     </>
   );

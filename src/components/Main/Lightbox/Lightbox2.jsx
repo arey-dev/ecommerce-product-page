@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { StyledButton } from "../../styled/Button.styled";
 import styled from "styled-components";
-import { products } from "../../../app/products";
+import { product } from "../../../app/products";
 
 const LightboxSection = styled.div`
   display: flex;
@@ -93,17 +93,19 @@ const LightboxButton = styled.div`
   }
 `;
 
-export const Lightbox = () => {
+const productImages = product.images;
+
+export const Lightbox2 = () => {
   const [showLightbox, setShowLightbox] = useState(false);
   const [currentImage, setCurrentImage] = useState(null);
 
   const handleThumbnailClick = (index) => {
-    setCurrentImage(products[index]);
+    setCurrentImage(productImages[index]);
   };
 
   const handleLightbox = () => {
     if (!currentImage) {
-      setCurrentImage(products[0]);
+      setCurrentImage(productImages[0]);
     }
 
     setShowLightbox(true);
@@ -111,17 +113,17 @@ export const Lightbox = () => {
 
   const handlePreviousButtonClick = () => {
     setCurrentImage((prevIndex) =>
-      prevIndex.id - 1 === 0
-        ? products[products.length - 1]
-        : products[prevIndex.id - 1 - 1]
+      prevIndex.id === 0
+        ? productImages[productImages.length - 1]
+        : productImages[prevIndex.id - 1]
     );
   };
 
   const handleNextButtonClick = () => {
     setCurrentImage((prevIndex) =>
-      prevIndex.id === products.length
-        ? products[0]
-        : products[prevIndex.id - 1 + 1]
+      prevIndex.id === productImages.length - 1
+        ? productImages[0]
+        : productImages[prevIndex.id + 1]
     );
   };
 
@@ -133,16 +135,19 @@ export const Lightbox = () => {
     <>
       <LightboxSection>
         <LightboxImage
-          src={currentImage ? currentImage.imageUrl : products[0].imageUrl}
+          src={currentImage ? currentImage.imageUrl : productImages[0].imageUrl}
           onClick={handleLightbox}
         />
         <ProductImages>
-          {products.map((product, index) => (
+          {productImages.map((image) => (
             <ProductCard
-              key={product.id}
-              onClick={() => handleThumbnailClick(index)}
+              key={image.id}
+              onClick={() => handleThumbnailClick(image.id)}
             >
-              <Thumbnail src={product.thumbnail} alt={product.name} />
+              <Thumbnail
+                src={image.thumbnail}
+                alt={"Fall Limited Edition Sneakers"}
+              />
             </ProductCard>
           ))}
         </ProductImages>
@@ -152,7 +157,11 @@ export const Lightbox = () => {
           <LightboxContent>
             <LightboxImageWrapper>
               <LightboxImage
-                src={currentImage ? currentImage.imageUrl : product1}
+                src={
+                  currentImage
+                    ? currentImage.imageUrl
+                    : product.images[0].imageUrl
+                }
               />
               <LightboxButton
                 direction="left"
@@ -181,12 +190,15 @@ export const Lightbox = () => {
               </LightboxButton>
             </LightboxImageWrapper>
             <ProductImages width="90">
-              {products.map((product, index) => (
+              {productImages.map((image) => (
                 <ProductCard
-                  key={product.id}
-                  onClick={() => handleThumbnailClick(index)}
+                  key={image.id}
+                  onClick={() => handleThumbnailClick(image.id)}
                 >
-                  <Thumbnail src={product.thumbnail} alt={product.name} />
+                  <Thumbnail
+                    src={image.thumbnail}
+                    alt="Fallout Limited Edition Sneakers"
+                  />
                 </ProductCard>
               ))}
             </ProductImages>

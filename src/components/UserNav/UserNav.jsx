@@ -5,7 +5,15 @@ import { IconWrapper } from "../styled/Wrappers.styled";
 import { Cart } from "./Cart";
 import avatar from "../assets/image-avatar.png";
 import cart from "../assets/icon-cart.svg";
-export function UserNav() {
+import { useState } from "react";
+
+export function UserNav({ fill, unload }) {
+  const [isOpen, setIsOpen] = useState(true);
+
+  const handleCartClick = () => {
+    setIsOpen((prevState) => !prevState);
+  };
+
   return (
     <>
       <NavInblock>
@@ -13,7 +21,7 @@ export function UserNav() {
           <li>
             <IconWrapper>
               <img src={cart} alt="cart icon" />
-              <Cart />
+              {isOpen && <Cart fill={fill} unload={unload} />}
             </IconWrapper>
           </li>
           <li>

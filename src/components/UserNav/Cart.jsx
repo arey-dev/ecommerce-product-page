@@ -1,16 +1,18 @@
 import styled from "styled-components";
 import { StyledButton } from "../styled/Button.styled";
+import { OrderItem } from "./OrderItem";
+import { product } from "../../app/products";
 
 const CartContainer = styled.section`
   position: absolute;
   top: 3.5rem;
-  left: -9rem;
-  width: 18.75rem;
+  left: -10rem;
+  width: 21rem;
   background-color: hsl(0, 0%, 100%);
   border-radius: 0.5rem;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px,
     rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
-  z-index: 1;
+  z-index: 2;
 `;
 
 const CartHeader = styled.div`
@@ -21,11 +23,12 @@ const CartHeader = styled.div`
 `;
 
 const OrdersContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  place-items: center;
-  padding-block: 1rem;
+  padding-block: 1.5rem;
   padding-inline: 1.5rem;
+
+  & > * {
+    margin-bottom: 1.5rem;
+  }
 `;
 
 const OrderList = styled.ul`
@@ -33,12 +36,6 @@ const OrderList = styled.ul`
   flex-direction: column;
   place-items: center;
   gap: 0.5rem;
-`;
-
-const OrderItem = styled.li`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
 `;
 
 const CheckoutButton = styled(StyledButton)`
@@ -53,20 +50,25 @@ const Text = styled.p`
   font-weight: 700;
   color: ${(props) => props.color || "hsl(220, 13%, 13%)"};
   padding-block: ${(props) => props.pBlock || "0"}rem;
+  text-align: center;
 `;
 
-export function Cart() {
-  const order = 0;
-
+export function Cart({ fill, unload }) {
   return (
     <CartContainer>
       <CartHeader>
         <Text>Cart</Text>
       </CartHeader>
       <OrdersContainer>
-        {order ? (
+        {fill ? (
           <OrderList>
-            <OrderItem>Shoes</OrderItem>
+            <OrderItem
+              productImg={product.images[0].thumbnail}
+              productName={product.name}
+              qty={fill}
+              price={product.price}
+              unload={unload}
+            />
           </OrderList>
         ) : (
           <Text pBlock="3" color="hsl(220, 14%, 75%)">

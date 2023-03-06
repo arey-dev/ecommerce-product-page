@@ -63,7 +63,7 @@ const OriginalPrice = styled.span`
   color: hsl(220, 14%, 75%);
 `;
 
-export function ProductSection({count, increment, decrement}) {
+export function ProductSection({count, increment, decrement, addToCart}) {
   return (
     <SectionContainer>
       <Heading>
@@ -81,7 +81,7 @@ export function ProductSection({count, increment, decrement}) {
       </Pricing>
       <FlexWrapper>
         <ItemCounter count={count} increment={increment} decrement={decrement}/>
-        <AddToCart />
+        <AddToCart addToCart={addToCart}/>
       </FlexWrapper>
     </SectionContainer>
   );
