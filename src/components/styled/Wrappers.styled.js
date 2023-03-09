@@ -1,13 +1,13 @@
 import styled from "styled-components";
 
 export const IconWrapper = styled.div`
+  position: relative;
   width: ${(props) => props.width || 2}rem;
   cursor: pointer;
 
   @media (max-width: 390px) {
     width 1.5rem;
   }
-
 `;
 
 export const AvatarWrapper = styled(IconWrapper)`

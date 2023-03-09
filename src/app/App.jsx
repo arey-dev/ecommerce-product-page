@@ -8,11 +8,12 @@ export function App() {
   const [fill, setFill] = useState(0);
 
   const handleCartFill = () => {
-    setFill(prevCount => prevCount + orderCount);
+    setFill((prevCount) => prevCount + orderCount);
   };
-  
+
   const handleCartDelete = () => {
     setFill(0);
+    setOrderCount(0);
   };
 
   const handleIncrement = () => {

@@ -12,8 +12,37 @@ const LightboxSection = styled.div`
 `;
 
 const ProductCard = styled(LightboxSection)`
+  width: 90%;
   gap: unset;
+  position: relative;
+  border-radius: 0.8rem;
   cursor: pointer;
+
+  &:hover::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255, 255, 255, 0.6);
+    z-index: 1;
+    border-radius: 0.7rem;
+  }
+
+  ${(props) =>
+    props.selected &&
+    `border: 2px solid hsl(26, 100%, 55%);
+    &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255, 255, 255, 0.6);
+    z-index: 1;
+    border-radius: 0.7rem;}`}
 `;
 
 const ProductImages = styled(LightboxSection)`
@@ -28,7 +57,7 @@ const Thumbnail = styled.img`
   max-width: 100%;
   height: auto;
   object-fit: contain;
-  border-radius: 0.8rem;
+  border-radius: 0.69rem;
 `;
 
 const CloseButton = styled(StyledButton)`
@@ -71,6 +100,7 @@ const LightboxImageWrapper = styled.div`
 const LightboxImage = styled.img`
   max-width: 100%;
   border-radius: 0.8rem;
+  cursor: pointer;
 `;
 
 const LightboxButton = styled.div`
@@ -98,8 +128,10 @@ const productImages = product.images;
 export const Lightbox2 = () => {
   const [showLightbox, setShowLightbox] = useState(false);
   const [currentImage, setCurrentImage] = useState(null);
+  const [selectedThumbnail, setSelectedThumbnail] = useState(0);
 
   const handleThumbnailClick = (index) => {
+    setSelectedThumbnail(index);
     setCurrentImage(productImages[index]);
   };
 
@@ -139,10 +171,11 @@ export const Lightbox2 = () => {
           onClick={handleLightbox}
         />
         <ProductImages>
-          {productImages.map((image) => (
+          {productImages.map((image, index) => (
             <ProductCard
               key={image.id}
               onClick={() => handleThumbnailClick(image.id)}
+              selected={selectedThumbnail === index}
             >
               <Thumbnail
                 src={image.thumbnail}
@@ -190,10 +223,11 @@ export const Lightbox2 = () => {
               </LightboxButton>
             </LightboxImageWrapper>
             <ProductImages width="90">
-              {productImages.map((image) => (
+              {productImages.map((image, index) => (
                 <ProductCard
                   key={image.id}
                   onClick={() => handleThumbnailClick(image.id)}
+                  selected={selectedThumbnail === index}
                 >
                   <Thumbnail
                     src={image.thumbnail}

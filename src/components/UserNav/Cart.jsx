@@ -12,7 +12,10 @@ const CartContainer = styled.section`
   border-radius: 0.5rem;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px,
     rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
-  z-index: 2;
+
+  @media (max-width: 1280px) {
+    left: -13.5rem;
+  }
 `;
 
 const CartHeader = styled.div`
@@ -26,7 +29,7 @@ const OrdersContainer = styled.div`
   padding-block: 1.5rem;
   padding-inline: 1.5rem;
 
-  & > * {
+  & > *:not(:last-child) {
     margin-bottom: 1.5rem;
   }
 `;
@@ -61,21 +64,23 @@ export function Cart({ fill, unload }) {
       </CartHeader>
       <OrdersContainer>
         {fill ? (
-          <OrderList>
-            <OrderItem
-              productImg={product.images[0].thumbnail}
-              productName={product.name}
-              qty={fill}
-              price={product.price}
-              unload={unload}
-            />
-          </OrderList>
+          <>
+            <OrderList>
+              <OrderItem
+                productImg={product.images[0].thumbnail}
+                productName={product.name}
+                qty={fill}
+                price={product.price}
+                unload={unload}
+              />
+            </OrderList>
+            <CheckoutButton>Checkout</CheckoutButton>
+          </>
         ) : (
           <Text pBlock="3" color="hsl(220, 14%, 75%)">
             Your cart is empty.
           </Text>
         )}
-        <CheckoutButton>Checkout</CheckoutButton>
       </OrdersContainer>
     </CartContainer>
   );
