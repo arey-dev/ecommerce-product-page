@@ -11,12 +11,11 @@ import { useEffect } from "react";
 
 export function Header({fill, unload}) {
   const [isOpen, setIsOpen] = useState(false);
-  const viewportWidth = useViewportWidth();
   const toggleMenu = () => setIsOpen(!isOpen);
+  const viewportWidth = useViewportWidth();
 
   useEffect(() => {
-    if (viewportWidth > 768) {
-      // Change this to whatever threshold you want
+    if (viewportWidth > 768) { // Change this to whatever threshold you want
       setIsOpen(false);
     }
   }, [viewportWidth]);

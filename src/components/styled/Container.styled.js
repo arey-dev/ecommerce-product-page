@@ -32,4 +32,10 @@ export const GridContainer = styled(StyledContainer)`
   grid-template-columns: repeat(2, 1fr);
   place-items: center;
   gap: 5rem;
+
+  @media (max-width: 832px) {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+    padding-block: 1rem;
+  }
 `;

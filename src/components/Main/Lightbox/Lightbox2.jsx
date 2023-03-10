@@ -1,7 +1,9 @@
 import React, { useState } from "react";
+import { useEffect } from "react";
 import { StyledButton } from "../../styled/Button.styled";
-import styled from "styled-components";
 import { product } from "../../../app/products";
+import styled from "styled-components";
+import { useViewportWidth } from "../../util-hooks/useViewportWidth";
 
 const LightboxSection = styled.div`
   display: flex;
@@ -9,6 +11,10 @@ const LightboxSection = styled.div`
   justify-content: center;
   align-items: center;
   gap: 2rem;
+
+  @media (max-width: 832px) {
+    flex-direction: row;
+  }
 `;
 
 const ProductCard = styled(LightboxSection)`
@@ -51,6 +57,11 @@ const ProductImages = styled(LightboxSection)`
   justify-content: space-between;
   align-items: center;
   gap: 1.25rem;
+
+  @media (max-width: 832px) {
+    flex-direction: column;
+    width: 33%;
+  }
 `;
 
 const Thumbnail = styled.img`
@@ -101,6 +112,8 @@ const LightboxImage = styled.img`
   max-width: 100%;
   border-radius: 0.8rem;
   cursor: pointer;
+
+  ${(props) => (props.disable ? "pointer-events: none" : null)};
 `;
 
 const LightboxButton = styled.div`
@@ -116,7 +129,13 @@ const LightboxButton = styled.div`
   cursor: pointer;
   z-index: 2;
   ${(props) =>
-    props.direction === "left" ? "left: -1.8rem;" : "right: -1.8rem;"}
+    props.direction === "left"
+      ? props.isMobile
+        ? "left: 0.5rem;"
+        : "left: -1.8rem;"
+      : props.isMobile
+      ? "right: -1.8rem;"
+      : "right: 0.5rem;"}
 
   &:hover > svg > path {
     stroke: hsl(26, 100%, 55%);
@@ -129,6 +148,14 @@ export const Lightbox2 = () => {
   const [showLightbox, setShowLightbox] = useState(false);
   const [currentImage, setCurrentImage] = useState(null);
   const [selectedThumbnail, setSelectedThumbnail] = useState(0);
+  const [showButtons, setShowButtons] = useState(false);
+  const viewportWidth = useViewportWidth();
+
+  useEffect(() => {
+    if (viewportWidth >= 812) {
+      setShowLightbox(false);
+    }
+  }, [viewportWidth]);
 
   const handleThumbnailClick = (index) => {
     setSelectedThumbnail(index);
@@ -166,24 +193,61 @@ export const Lightbox2 = () => {
   return (
     <>
       <LightboxSection>
-        <LightboxImage
-          src={currentImage ? currentImage.imageUrl : productImages[0].imageUrl}
-          onClick={handleLightbox}
-        />
-        <ProductImages>
-          {productImages.map((image, index) => (
-            <ProductCard
-              key={image.id}
-              onClick={() => handleThumbnailClick(image.id)}
-              selected={selectedThumbnail === index}
-            >
-              <Thumbnail
-                src={image.thumbnail}
-                alt={"Fall Limited Edition Sneakers"}
-              />
-            </ProductCard>
-          ))}
-        </ProductImages>
+        <LightboxImageWrapper>
+          <LightboxImage
+            disable={viewportWidth <= 800}
+            src={
+              currentImage ? currentImage.imageUrl : productImages[0].imageUrl
+            }
+            onClick={handleLightbox}
+          />
+          {viewportWidth <= 640 && (
+            <>
+              <LightboxButton
+                direction="left"
+                isMobile={viewportWidth <= 640}
+                onClick={handlePreviousButtonClick}
+              >
+                <svg width="12" height="18" xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M11 1 3 9l8 8"
+                    stroke="#1D2026"
+                    stroke-width="3"
+                    fill="none"
+                    fill-rule="evenodd"
+                  />
+                </svg>
+              </LightboxButton>
+              <LightboxButton direction="right" onClick={handleNextButtonClick}>
+                <svg width="13" height="18" xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="m2 1 8 8-8 8"
+                    stroke="#1D2026"
+                    stroke-width="3"
+                    fill="none"
+                    fill-rule="evenodd"
+                  />
+                </svg>
+              </LightboxButton>
+            </>
+          )}
+        </LightboxImageWrapper>
+        {viewportWidth > 640 && (
+          <ProductImages>
+            {productImages.map((image, index) => (
+              <ProductCard
+                key={image.id}
+                onClick={() => handleThumbnailClick(image.id)}
+                selected={selectedThumbnail === index}
+              >
+                <Thumbnail
+                  src={image.thumbnail}
+                  alt={"Fall Limited Edition Sneakers"}
+                />
+              </ProductCard>
+            ))}
+          </ProductImages>
+        )}
       </LightboxSection>
       {showLightbox && (
         <LightboxOverlay>

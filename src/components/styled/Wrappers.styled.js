@@ -31,7 +31,7 @@ export const FlexWrapper = styled.div`
   justify-content: space-between;
   gap: 1rem;
 
-  @media (max-width: 768px) {
+  @media (max-width: 512px) {
     flex-direction: column;
   }
 `;
