@@ -13,7 +13,7 @@ export const FlexedContainer = styled(StyledContainer)`
   gap: 5rem;
   transition: gap 0.3s ease-in-out;
 
-  @media (max-width: 842px) {
+  @media (max-width: 840px) {
     gap: 1rem;
   }
 `;
@@ -36,6 +36,10 @@ export const GridContainer = styled(StyledContainer)`
   @media (max-width: 832px) {
     grid-template-columns: 1fr;
     gap: 2.5rem;
-    padding-block: 1rem;
+    padding-block: 0rem 4rem;
+  }
+
+  @media (max-width: 480px) {
+    width: min(${(props) => props.width || 1100}px, 100% - 0rem);
   }
 `;

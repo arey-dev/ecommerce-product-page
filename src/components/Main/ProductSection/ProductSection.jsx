@@ -6,6 +6,10 @@ import { FlexWrapper } from "../../styled/Wrappers.styled";
 const SectionContainer = styled.section`
   text-align: justified;
   font-weight: 700;
+
+  @media (max-width: 480px) {
+    margin-inline: 2rem;
+  }
 `;
 
 const Heading = styled.h1`
@@ -63,7 +67,7 @@ const OriginalPrice = styled.span`
   color: hsl(220, 14%, 75%);
 `;
 
-export function ProductSection({count, increment, decrement, addToCart}) {
+export function ProductSection({ count, increment, decrement, addToCart }) {
   return (
     <SectionContainer>
       <Heading>
@@ -80,8 +84,12 @@ export function ProductSection({count, increment, decrement, addToCart}) {
         <OriginalPrice>$250.00</OriginalPrice>
       </Pricing>
       <FlexWrapper>
-        <ItemCounter count={count} increment={increment} decrement={decrement}/>
-        <AddToCart addToCart={addToCart}/>
+        <ItemCounter
+          count={count}
+          increment={increment}
+          decrement={decrement}
+        />
+        <AddToCart addToCart={addToCart} />
       </FlexWrapper>
     </SectionContainer>
   );

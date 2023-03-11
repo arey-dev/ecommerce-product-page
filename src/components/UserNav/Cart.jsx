@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { StyledButton } from "../styled/Button.styled";
 import { OrderItem } from "./OrderItem";
 import { product } from "../../app/products";
+import { useViewportWidth } from "../util-hooks/useViewportWidth";
 
 const CartContainer = styled.section`
   position: absolute;
@@ -18,6 +19,13 @@ const CartContainer = styled.section`
     left: -13.5rem;
   }
 
+  @media (max-width: 420px) {
+    width: 95%;
+    top: 7rem;
+    left: 0;
+    right: 0;
+    margin-inline: auto;
+  }
 `;
 
 const CartHeader = styled.div`
@@ -55,10 +63,12 @@ const Text = styled.p`
   font-weight: 700;
   color: ${(props) => props.color || "hsl(220, 13%, 13%)"};
   padding-block: ${(props) => props.pBlock || "0"}rem;
-  text-align: center;
+  ${(props) => (props.center ? "text-align: center" : null)}
 `;
 
 export function Cart({ fill, unload }) {
+  const viewportWidth = useViewportWidth();
+
   return (
     <CartContainer>
       <CartHeader>
@@ -79,7 +89,11 @@ export function Cart({ fill, unload }) {
             <CheckoutButton>Checkout</CheckoutButton>
           </>
         ) : (
-          <Text pBlock="3" color="hsl(220, 14%, 75%)">
+          <Text
+            pBlock={viewportWidth <= 480 ? 5 : 3}
+            color="hsl(220, 14%, 75%)"
+            center
+          >
             Your cart is empty.
           </Text>
         )}

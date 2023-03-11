@@ -7,6 +7,10 @@ export const StyledNav = styled.nav`
 export const NavInblock = styled.nav`
   display: inline-block;
   position: relative;
+
+  @media (max-width: 420px) {
+    position: unset;
+  }
 `;
 
 export const Hamburger = styled.div`

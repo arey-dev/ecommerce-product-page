@@ -9,13 +9,14 @@ import logo from "../assets/logo.svg";
 import { useViewportWidth } from "../util-hooks/useViewportWidth";
 import { useEffect } from "react";
 
-export function Header({fill, unload}) {
+export function Header({ fill, unload }) {
   const [isOpen, setIsOpen] = useState(false);
   const toggleMenu = () => setIsOpen(!isOpen);
   const viewportWidth = useViewportWidth();
 
   useEffect(() => {
-    if (viewportWidth > 768) { // Change this to whatever threshold you want
+    if (viewportWidth > 840) {
+      // Change this to whatever threshold you want
       setIsOpen(false);
     }
   }, [viewportWidth]);
@@ -30,7 +31,7 @@ export function Header({fill, unload}) {
         </Hamburger>
         <Logo src={logo} alt="Sneakers Logo" />
         <Nav isOpen={isOpen} onToggleMenu={toggleMenu} />
-        <UserNav fill={fill} unload={unload}/>
+        <UserNav fill={fill} unload={unload} />
         <Overlay isOpen={isOpen} />
       </HeaderContainer>
     </header>

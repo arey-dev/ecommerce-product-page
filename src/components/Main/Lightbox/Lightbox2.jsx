@@ -114,6 +114,10 @@ const LightboxImage = styled.img`
   cursor: pointer;
 
   ${(props) => (props.disable ? "pointer-events: none" : null)};
+
+  @media (max-width: 480px) {
+    border-radius: 0;
+  }
 `;
 
 const LightboxButton = styled.div`
@@ -148,7 +152,6 @@ export const Lightbox2 = () => {
   const [showLightbox, setShowLightbox] = useState(false);
   const [currentImage, setCurrentImage] = useState(null);
   const [selectedThumbnail, setSelectedThumbnail] = useState(0);
-  const [showButtons, setShowButtons] = useState(false);
   const viewportWidth = useViewportWidth();
 
   useEffect(() => {
@@ -212,9 +215,9 @@ export const Lightbox2 = () => {
                   <path
                     d="M11 1 3 9l8 8"
                     stroke="#1D2026"
-                    stroke-width="3"
+                    strokeWidth="3"
                     fill="none"
-                    fill-rule="evenodd"
+                    fillRule="evenodd"
                   />
                 </svg>
               </LightboxButton>
@@ -223,9 +226,9 @@ export const Lightbox2 = () => {
                   <path
                     d="m2 1 8 8-8 8"
                     stroke="#1D2026"
-                    stroke-width="3"
+                    strokeWidth="3"
                     fill="none"
-                    fill-rule="evenodd"
+                    fillRule="evenodd"
                   />
                 </svg>
               </LightboxButton>
@@ -268,9 +271,9 @@ export const Lightbox2 = () => {
                   <path
                     d="M11 1 3 9l8 8"
                     stroke="#1D2026"
-                    stroke-width="3"
+                    strokeWidth="3"
                     fill="none"
-                    fill-rule="evenodd"
+                    fillRule="evenodd"
                   />
                 </svg>
               </LightboxButton>
@@ -279,9 +282,9 @@ export const Lightbox2 = () => {
                   <path
                     d="m2 1 8 8-8 8"
                     stroke="#1D2026"
-                    stroke-width="3"
+                    strokeWidth="3"
                     fill="none"
-                    fill-rule="evenodd"
+                    fillRule="evenodd"
                   />
                 </svg>
               </LightboxButton>
@@ -305,7 +308,7 @@ export const Lightbox2 = () => {
                 <path
                   d="m11.596.782 2.122 2.122L9.12 7.499l4.597 4.597-2.122 2.122L7 9.62l-4.595 4.597-2.122-2.122L4.878 7.5.282 2.904 2.404.782l4.595 4.596L11.596.782Z"
                   fill="#69707D"
-                  fill-rule="evenodd"
+                  fillRule="evenodd"
                 />
               </svg>
             </CloseButton>
