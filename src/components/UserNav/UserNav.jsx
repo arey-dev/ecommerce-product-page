@@ -1,12 +1,11 @@
 import { NavInblock } from "../styled/Nav.styled";
 import { StyledUlList } from "../styled/List.styled";
-import { AvatarWrapper } from "../styled/Wrappers.styled";
 import { IconWrapper } from "../styled/Wrappers.styled";
 import { Cart } from "./Cart";
 import { useState } from "react";
-import avatar from "../assets/image-avatar.png";
-import cart from "../assets/icon-cart.svg";
+import cart from "../../assets/icon-cart.svg";
 import styled from "styled-components";
+import { Avatar } from "../Avatar/Avatar";
 
 const Notification = styled.div`
   font-size: 0.625rem;
@@ -39,9 +38,7 @@ export function UserNav({ fill, unload }) {
             {isOpen && <Cart fill={fill} unload={unload} />}
           </li>
           <li>
-            <AvatarWrapper width="3" height="3">
-              <img src={avatar} alt="profile picture" />
-            </AvatarWrapper>
+            <Avatar />
           </li>
         </StyledUlList>
       </NavInblock>

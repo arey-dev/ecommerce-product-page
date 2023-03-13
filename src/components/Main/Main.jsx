@@ -1,7 +1,5 @@
-import styled from "styled-components";
 import { ProductSection } from "./ProductSection";
 import { GridContainer } from "../styled/Container.styled";
-// import { Lightbox } from "./Lightbox";
 import { Lightbox2 } from "./Lightbox";
 
 export function Main({ count, increment, decrement, addToCart }) {

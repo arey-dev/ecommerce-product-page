@@ -1,7 +1,7 @@
 import styled from "styled-components";
-import { StyledButton } from "../../styled/Button.styled";
 import minus from "./icon-minus.svg";
 import plus from "./icon-plus.svg";
+import { StyledButton } from "../../styled/Button.styled";
 import { FlexWrapper } from "../../styled/Wrappers.styled";
 
 const CounterWrapper = styled(FlexWrapper)`

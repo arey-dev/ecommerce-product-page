@@ -1,13 +1,11 @@
-import { useState } from "react";
-import { HeaderContainer } from "../styled/Container.styled";
+import { useState, useEffect } from "react";
 import { Nav } from "../Nav";
 import { Logo } from "../Logo";
 import { UserNav } from "../UserNav";
-import { Hamburger } from "../styled/Nav.styled";
+import { HeaderContainer } from "../styled/Container.styled";
 import { Overlay } from "../styled/Overlay.styled";
-import logo from "../assets/logo.svg";
+import { Hamburger } from "../styled/Nav.styled";
 import { useViewportWidth } from "../util-hooks/useViewportWidth";
-import { useEffect } from "react";
 
 export function Header({ fill, unload }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -29,7 +27,7 @@ export function Header({ fill, unload }) {
           <span></span>
           <span></span>
         </Hamburger>
-        <Logo src={logo} alt="Sneakers Logo" />
+        <Logo />
         <Nav isOpen={isOpen} onToggleMenu={toggleMenu} />
         <UserNav fill={fill} unload={unload} />
         <Overlay isOpen={isOpen} />

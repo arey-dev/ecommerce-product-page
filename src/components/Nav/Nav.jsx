@@ -2,7 +2,7 @@ import { StyledUlList } from "../styled/List.styled";
 import { StyledLink } from "../styled/Link.styled";
 import { StyledNav } from "../styled/Nav.styled";
 import styled from "styled-components";
-import close from "../assets/icon-close.svg";
+import close from "../../assets/icon-close.svg";
 
 const CloseButton = styled.button`
   display: ${({ isOpen }) => (isOpen ? "inline-block" : "none")};
