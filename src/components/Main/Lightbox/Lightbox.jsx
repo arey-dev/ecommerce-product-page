@@ -149,7 +149,7 @@ const productImages = product.images;
 
 export const Lightbox2 = () => {
   const [showLightbox, setShowLightbox] = useState(false);
-  const [currentImage, setCurrentImage] = useState(null);
+  const [currentImage, setCurrentImage] = useState(productImages[0]);
   const [selectedThumbnail, setSelectedThumbnail] = useState(0);
   const viewportWidth = useViewportWidth();
 
