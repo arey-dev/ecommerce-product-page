@@ -137,8 +137,8 @@ const LightboxButton = styled.div`
         ? "left: 0.5rem;"
         : "left: -1.8rem;"
       : props.isMobile
-      ? "right: -1.8rem;"
-      : "right: 0.5rem;"}
+      ? "right: 0.5rem;"
+      : "right: -1.8rem;"}
 
   &:hover > svg > path {
     stroke: hsl(26, 100%, 55%);
@@ -220,7 +220,11 @@ export const Lightbox2 = () => {
                   />
                 </svg>
               </LightboxButton>
-              <LightboxButton direction="right" onClick={handleNextButtonClick}>
+              <LightboxButton
+                direction="right"
+                isMobile={viewportWidth <= 640}
+                onClick={handleNextButtonClick}
+              >
                 <svg width="13" height="18" xmlns="http://www.w3.org/2000/svg">
                   <path
                     d="m2 1 8 8-8 8"
